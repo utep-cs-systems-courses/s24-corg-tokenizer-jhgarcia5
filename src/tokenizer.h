@@ -5,23 +5,64 @@
 /* Return true (non-zero) if c is a whitespace characer
    ('\t' or ' ').  
    Zero terminators are not printable (therefore false) */
-int space_char(char c);
+int space_char(char c)
+{
+  if (strcmp(c," ") | strcmp(c, "\t")){
+    return 1
+  }
+
+  return 0
+}
 
 /* Return true (non-zero) if c is a non-whitespace 
    character (not tab or space).  
    Zero terminators are not printable (therefore false) */ 
-int non_space_char(char c);
+int non_space_char(char c)
+{
+  if (strcmp(c," ") | strcmp(c,"\t")){
+    return 0
+  }
+  return 1
+}
 
 /* Returns a pointer to the first character of the next 
    space-separated token in zero-terminated str.  Return a zero pointer if 
    str does not contain any tokens. */
-char *token_start(char *str); 
+char *token_start(char *str)
+{
+  int i = 0
+  while (space_char(str[i])) {
+    i = i + 1
+  }
+  return &str[i]
+}
 
 /* Returns a pointer terminator char following *token */
-char *token_terminator(char *token);
+char *token_terminator(char *token)
+{
+  int i = 0
+  while(non_space_char(str[i]){   
+    i = i + 1
+  }
+  return &str[i]
+}
 
 /* Counts the number of tokens in the string argument. */
-int count_tokens(char *str);
+int count_tokens(char *str)
+{
+  int tokens_found = 0
+
+  while(){
+
+    //Continuously ask for token start and end, count 1 everytime we complete.
+    
+  }
+  
+  for(int i = 0;i < strlen(str); i++){
+    
+  }
+  
+}
 
 /* Returns a fresly allocated new zero-terminated string 
    containing <len> chars from <inStr> */
