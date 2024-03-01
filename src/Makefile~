@@ -1,0 +1,16 @@
+OBJS = uimain.o tester.o tokenizer.o history.o
+
+CFLAGS=-g -03
+
+all: tokenizer
+
+tokenizer: $(OBJS)
+	cc -o tokenizer $(CFLAGS) $(OBJS)
+
+$(OBJS): draw.h
+
+clean:
+	rm -f *.0 tokenizer
+
+run:tokenizer
+	./tokenizer
