@@ -1,17 +1,11 @@
-OBJS = uimain.o tester.o tokenizer.o history.o
-
 CFLAGS=-g -O3
 
-all: tokens
+all: tokenizer
 
-tokens: $(OBJS)
-	cc -o tokens $(CFLAGS) $(OBJS)
-
-tokenizer.o: tokenizer.h
 history.o: history.h
+tokenizer.o: tokenizer.h
 
+tokenizer: history.o tokenizer.o
+	cc -o $@ $^ $(CFLAGS)
 clean:
-	rm -f *.0 tokens
-
-run:tokens
-	./tokens
+	rm -f *.0 tokenizer

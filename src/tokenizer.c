@@ -6,7 +6,7 @@
    Zero terminators are not printable (therefore false) */
 int space_char(char c)
 {
-  if (c == " ") | (c == "\t")){
+  if ((c == ' ') | (c == '\t')){
     return 1;
   }
 
@@ -18,7 +18,7 @@ int space_char(char c)
    Zero terminators are not printable (therefore false) */ 
 int non_space_char(char c)
 {
-  if ((c == " ") | (c == "\t") | (c ==  "\0")){
+  if ((c == ' ') | (c == '\t') | (c ==  '\0')){
     return 0;
   }
   return 1;
@@ -39,7 +39,7 @@ char *token_start(char *str)
 char *token_terminator(char *token)
 {
   while(non_space_char(*token)){   
-      token += 1
+    token += 1;
   }
   return token;
 }
@@ -48,8 +48,8 @@ char *token_terminator(char *token)
 int count_tokens(char *str)
 {
   int tokens_found = 0;
-  int *index = str;
-  while(*index != '\O') {
+  int index = 0;
+  while(str[index] != '\0') {
 
     //Continuously ask for token start and end, count 1 everytime we complete.
     

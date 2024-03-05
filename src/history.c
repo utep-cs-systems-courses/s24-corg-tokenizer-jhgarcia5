@@ -22,12 +22,11 @@ List* init_history()
   return history;
 }
 
-void add_history(List *list, char *str);
+void add_history(List *list, char *str)
 {
 
   Item* item = malloc(sizeof(Item));
-  item->id = list->next_id++;
-
+ 
 }
 
 char *get_history(List *list, int id)
