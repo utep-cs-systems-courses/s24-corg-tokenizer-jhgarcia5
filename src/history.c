@@ -1,0 +1,50 @@
+#ifndef _HISTORY_
+#define _HISTORY_
+#include <stdlib.h>
+
+typedef struct s_Item {
+
+  int id;
+  char *str;
+  struct s_Item *next;
+} Item;
+
+typedef struct s_List {
+
+  struct s_Item *root;
+
+} List;
+
+List* init_history()
+{
+  List* history = malloc(sizeof(List));
+  history->root = NULL;
+  return history;
+}
+
+void add_history(List *list, char *str);
+{
+
+  Item* item = malloc(sizeof(Item));
+  item->id = list->next_id++;
+
+}
+
+char *get_history(List *list, int id)
+{
+
+
+}
+
+void print_history(List *list)
+{
+
+
+}
+
+void free_history(List *list)
+{
+
+}
+
+#endif

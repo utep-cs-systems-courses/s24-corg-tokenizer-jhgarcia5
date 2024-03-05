@@ -6,7 +6,7 @@
    Zero terminators are not printable (therefore false) */
 int space_char(char c)
 {
-  if (strcmp(c," ") | strcmp(c, "\t")){
+  if (c == " ") | (c == "\t")){
     return 1;
   }
 
@@ -17,8 +17,8 @@ int space_char(char c)
    character (not tab or space).  
    Zero terminators are not printable (therefore false) */ 
 int non_space_char(char c)
-
-  if (strcmp(c," ") | strcmp(c,"\t") | strcmp(c, "\0")){
+{
+  if ((c == " ") | (c == "\t") | (c ==  "\0")){
     return 0;
   }
   return 1;
@@ -38,7 +38,7 @@ char *token_start(char *str)
 /* Returns a pointer terminator char following *token */
 char *token_terminator(char *token)
 {
-  while(non_space_char(*token){   
+  while(non_space_char(*token)){   
       token += 1
   }
   return token;
@@ -48,16 +48,16 @@ char *token_terminator(char *token)
 int count_tokens(char *str)
 {
   int tokens_found = 0;
-  int *i = str;
-  while(i != '\O') {
+  int *index = str;
+  while(*index != '\O') {
 
     //Continuously ask for token start and end, count 1 everytime we complete.
     
-    i = token_start(i);
+    index = token_start(index);
 
-    if (*i){
+    if (*index){
       tokens_found += 1;
-      i = token_terminator(i);
+      index = token_terminator(index);
     }
   }
   return tokens_found;
@@ -108,6 +108,7 @@ char *copy_str(char *inStr, short len)
      tokenIndex += 1;
      ptr = endOfString
    }
+   return tokens;
  }
  
 /* Prints all tokens. */
