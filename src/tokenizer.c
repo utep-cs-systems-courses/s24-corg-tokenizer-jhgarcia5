@@ -91,7 +91,7 @@ char *copy_str(char *inStr, short len)
  char **tokenize(char* str)
  {
    int numTokens = count_tokens(str);
-   char *tokens = malloc((numTokens + 1) * sizeof(char));
+   char **tokens = malloc((numTokens + 1) * sizeof(char));
 
    int tokenIndex = 0;
    char *index = str;
@@ -113,10 +113,26 @@ char *copy_str(char *inStr, short len)
 /* Prints all tokens. */
 void print_tokens(char **tokens)
 {
-
+  int index = 0;
+  while(tokens[index] != '\0'){
+    printf(tokens[index]);
+    index += 1;
+  }
+  printf(tokens[index]);
 }
 
 /* Frees all tokens and the vector containing themx. */
-void free_tokens(char **tokens);
+void free_tokens(char **tokens)
+{
+  int index = 0;
+  while(tokens[index] != '\0'){
+    free(tokens[index]);
+    index += 1;
+
+  }
+
+  free(tokens[index]);
+  free(tokens);
+}
 
 #endif
