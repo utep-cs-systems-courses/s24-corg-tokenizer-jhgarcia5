@@ -17,7 +17,7 @@ int space_char(char c)
    character (not tab or space).  
    Zero terminators are not printable (therefore false) */ 
 int non_space_char(char c)
-{
+
   if (strcmp(c," ") | strcmp(c,"\t") | strcmp(c, "\0")){
     return 0;
   }
@@ -48,16 +48,19 @@ char *token_terminator(char *token)
 int count_tokens(char *str)
 {
   int tokens_found = 0;
-  int i = *str;
-  while(i < strlen(str)) {
+  int *i = str;
+  while(i != '\O') {
 
     //Continuously ask for token start and end, count 1 everytime we complete.
     
     i = token_start(i);
-    tokens_found += 1;
-    i = token_terminator(i);
+
+    if (*i){
+      tokens_found += 1;
+      i = token_terminator(i);
+    }
   }
-  return i;
+  return tokens_found;
 }
 
 /* Returns a fresly allocated new zero-terminated string 
