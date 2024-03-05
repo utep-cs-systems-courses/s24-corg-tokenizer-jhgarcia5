@@ -67,14 +67,15 @@ int count_tokens(char *str)
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len)
 {
-  char *copyInStr = malloc((len + 1) * sizeof(char)), c;
-  int sIndex = 0;
-  do {
-    c = *(copyInStr+sIndex) = *(inStr + sIndex);
-    sIndex++;
-  } while(c);
+  char *copyInStr = malloc((len + 1) * sizeof(char));
+  int stringIndex = 0;
+
+  while(stringIndex < len){
+    copyInStr[stringIndex] = inStr[stringIndex];
+    stringIndex += 1;
+  }
   
-  return *new_str
+  return copyInStr;
 }
  
  
@@ -89,12 +90,31 @@ char *copy_str(char *inStr, short len)
 */
  char **tokenize(char* str)
  {
+   int numTokens = count_tokens(str);
+   char *tokens = malloc((numTokens + 1) * sizeof(char));
 
+   int tokenIndex = 0;
+   char *index = str;
+   int lenStr = strlen(str);
    
+   while(index < lenStr){
 
+     index = token_start(index);
+     char *endOfString = token_terminator(index);
+     char length = endOfString - index;
+
+     token[token_index] = copy_str(index, length); 
+
+     tokenIndex += 1;
+     ptr = endOfString
+   }
  }
+ 
 /* Prints all tokens. */
-void print_tokens(char **tokens);
+void print_tokens(char **tokens)
+{
+
+}
 
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens);
