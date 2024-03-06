@@ -1,5 +1,7 @@
 #ifndef _TOKENIZER_
 #define _TOKENIZER_
+#include <stdio.h>
+#include <stdlib.h>
 
 /* Return true (non-zero) if c is a whitespace characer
    ('\t' or ' ').  
@@ -48,8 +50,8 @@ char *token_terminator(char *token)
 int count_tokens(char *str)
 {
   int tokens_found = 0;
-  int index = 0;
-  while(str[index] != '\0') {
+  char *index = str;
+  while(*index != '\0') {
 
     //Continuously ask for token start and end, count 1 everytime we complete.
     
