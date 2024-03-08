@@ -75,8 +75,7 @@ char *copy_str(char *inStr, short len)
   while(stringIndex < len){
     copyInStr[stringIndex] = inStr[stringIndex];
     stringIndex += 1;
-  }
-  
+  }  
   return copyInStr;
 }
  
@@ -97,18 +96,17 @@ char *copy_str(char *inStr, short len)
 
    int tokenIndex = 0;
    char *index = str;
-   int lenStr = strlen(str);
-   
-   while(index < lenStr){
+      
+   while(*index != '\0'){
 
      index = token_start(index);
      char *endOfString = token_terminator(index);
      char length = endOfString - index;
 
-     token[token_index] = copy_str(index, length); 
+     tokens[tokenIndex] = copy_str(index, length); 
 
      tokenIndex += 1;
-     ptr = endOfString
+     index = endOfString;
    }
    return tokens;
  }
@@ -116,25 +114,20 @@ char *copy_str(char *inStr, short len)
 /* Prints all tokens. */
 void print_tokens(char **tokens)
 {
-  int index = 0;
-  while(tokens[index] != '\0'){
-    printf(tokens[index]);
-    index += 1;
+
+  for (int i = 0; tokens[i] != NULL; i++){
+    printf("%d = %s", i, tokens[i]);
   }
-  printf(tokens[index]);
 }
 
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens)
 {
-  int index = 0;
-  while(tokens[index] != '\0'){
-    free(tokens[index]);
-    index += 1;
 
+  for (int i = 0; tokens[i] != NULL; i++){
+    free(tokens[i]);
   }
 
-  free(tokens[index]);
   free(tokens);
 }
 

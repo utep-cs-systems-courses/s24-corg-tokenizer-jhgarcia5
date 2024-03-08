@@ -26,7 +26,10 @@ void add_history(List *list, char *str)
 {
 
   Item* item = malloc(sizeof(Item));
- 
+  //Traverse through list, to obtain next
+
+  
+  
 }
 
 char *get_history(List *list, int id)

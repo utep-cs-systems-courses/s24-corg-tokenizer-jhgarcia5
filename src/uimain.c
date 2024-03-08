@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "tokenizer.c" //Functions
+#include "tokenizer.h" //Functions
 
 int main()
 {
@@ -7,10 +7,11 @@ int main()
 
   while(1) {
 
-    puts("Please input a string to tokenizer ( i ), check history ( h ), or quit ( q )")
+    puts("Please input a string to tokenizer ( i ), check history ( h ), or quit ( q )");
     
-    int input;
-    while((input = getchar() == '\n'); //Ignore entered newlines
+    char input = getchar();
+    printf(input);
+    // while(input = getchar() == '\n'); //Ignore entered newlines
 
     if (input == EOF)
       goto done;
@@ -38,10 +39,9 @@ int main()
     default:
       puts("Please enter a recognized option");
 
-    }
-     
+    }     
   }
 
   done:
-      return 0
+  return 0;
 }
