@@ -116,7 +116,7 @@ void print_tokens(char **tokens)
 {
 
   for (int i = 0; tokens[i] != NULL; i++){
-    printf("%d = %s", i, tokens[i]);
+    printf("tokens[%d] = %s\n", i, tokens[i]);
   }
 }
 

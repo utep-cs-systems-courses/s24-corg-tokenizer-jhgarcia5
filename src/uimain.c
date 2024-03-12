@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "tokenizer.h" //Functions
+#include "history.h"
 
 int main()
 {
@@ -19,6 +20,7 @@ int main()
         fputs("Enter your new string\n>", stdout);
 	fflush(stdout);
         char inputString[100];
+	getchar();
         fgets(inputString, sizeof(inputString), stdin);
 	printf("You inputed: %s", inputString);
 	char **tokens = tokenize(inputString);
