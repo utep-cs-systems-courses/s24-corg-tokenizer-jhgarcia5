@@ -1,6 +1,7 @@
 #ifndef _HISTORY_
 #define _HISTORY_
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct s_Item {
 
@@ -26,16 +27,31 @@ void add_history(List *list, char *str)
 {
 
   Item* item = malloc(sizeof(Item));
-  int currId = 0;
 
+  //I need to get the size of my string
+  int len = 0;
+  while(str[len] != '\0'){
+    len += 1;
+  }
+
+  item->str = malloc(len + 1);
+  item->next = NULL;
+  
+  
+  //If my list is NULL
+  if (list->root == NULL){
+    item->id = 1;
+    list->root = item;
+    return;
+  }
+  
+  
   Item* current = list->root;
   while(current->next != NULL){
     current = current->next;
-    currId += 1;
   }
-  item->id = currId;
-  item->str = str;
-  item->next = NULL;
+  
+  item->id = current->id + 1;
   current->next = item;
 }
 
@@ -43,20 +59,25 @@ char *get_history(List *list, int id)
 {
   Item* current = list->root;
 
-  while(current->id != id){
+  while(current != NULL){
+
+    if (current->id == id){
+      return current->str;
+    }
+    
     current = current->next;
   }
 
-  return current->str;
+  return NULL;
 }
 
 void print_history(List *list)
 {
 
   Item* current = list->root;
-  put("History");
+  puts("History");
   while(current != NULL){
-    printf("ID: %d, %s",current->id, current->str);
+    printf("ID: %d, %s\n",current->id, current->str);
     current = current->next;
   }
 
@@ -64,7 +85,7 @@ void print_history(List *list)
 
 void free_history(List *list)
 {
-
+  return;
 }
 
 #endif

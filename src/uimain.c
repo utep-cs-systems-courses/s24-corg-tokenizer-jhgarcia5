@@ -5,7 +5,9 @@
 int main()
 {
   puts("Hi! Welcome to our character");
-
+  //Have to create a History list here
+  List* history = init_history();
+  
   while(1) {
 
     fputs("Please WOKR input a string to tokenizer ( i ), check history ( h ), or quit ( q )\n>", stdout);
@@ -25,13 +27,18 @@ int main()
 	printf("You inputed: %s", inputString);
 	char **tokens = tokenize(inputString);
         print_tokens(tokens);
-        //HAVE TO ADD TO LLIST IN HISTORY
 
+	//HAVE TO ADD TO LLIST IN HISTORY
+	add_history(history, tokens);
+	
         free_tokens(tokens);
         break;
 
       case 'h':
-        break;
+
+	print_history(history);
+
+	break;
 
       case 'q':
         puts("Thank you for using this program!");
