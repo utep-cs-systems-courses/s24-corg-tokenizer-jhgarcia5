@@ -7,16 +7,18 @@ int main()
 
   while(1) {
 
-    puts("Please input a string to tokenizer ( i ), check history ( h ), or quit ( q )");
-    
-    char input = getchar();
-    printf(input);
-    // while(input = getchar() == '\n'); //Ignore entered newlines
-
-    if (input == EOF)
+    fputs("Please input a string to tokenizer ( i ), check history ( h ), or quit ( q )\n>", stdout);
+    fflush(stdout);
+    int c;
+    while(c == '\n'){ //Ignore entered newlines
+      c = getchar();
+    }
+  
+    if (c == EOF){
       goto done;
+    }
 	  
-    switch(input) {
+    switch(c) {
     case 'i':
       puts("Enter your new string");
       puts(">");
