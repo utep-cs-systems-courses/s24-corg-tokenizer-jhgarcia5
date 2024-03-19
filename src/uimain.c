@@ -7,7 +7,7 @@ int main()
   puts("Hi! Welcome to our character");
   //Have to create a History list here
   List* history = init_history();
-  
+  //char inputString[100];
   while(1) {
 
     fputs("Please WOKR input a string to tokenizer ( i ), check history ( h ), or quit ( q )\n>", stdout);
@@ -29,15 +29,36 @@ int main()
         print_tokens(tokens);
 
 	//HAVE TO ADD TO LLIST IN HISTORY
-	add_history(history, tokens);
-	
+	add_history(history, inputString);
+	puts("Passed adding to history");
         free_tokens(tokens);
+	puts("Freed tokenss");
         break;
 
       case 'h':
 
-	print_history(history);
+	fputs("Do you want to access a specific index or all history? (Input the '!' for a specific index or 'a' for all)\n>", stdout);
+	fflush(stdout);
 
+	int h = getchar();
+	while(h == '\n' || h == EOF){
+	  h = getchar();
+	}
+	switch(h){ 
+	  case 'a':
+	    print_history(history);
+	    break;
+
+	  case '!':
+	    printf("Enter the number you want to retrieve\n>");
+	    getchar();
+	    int o = getchar();
+	    //puts("PASSING");
+	    //Its inputting something into o directly
+	    printf(get_history(history, o));	  
+	    break; 
+	}
+	
 	break;
 
       case 'q':

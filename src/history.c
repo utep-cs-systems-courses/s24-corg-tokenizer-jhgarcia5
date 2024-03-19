@@ -35,6 +35,11 @@ void add_history(List *list, char *str)
   }
 
   item->str = malloc(len + 1);
+
+  for (int i = 0; i <= len; i++){
+    item->str[i] = str[i];
+  }
+
   item->next = NULL;
   
   
@@ -53,6 +58,7 @@ void add_history(List *list, char *str)
   
   item->id = current->id + 1;
   current->next = item;
+  current = current->next;
 }
 
 char *get_history(List *list, int id)
@@ -68,19 +74,17 @@ char *get_history(List *list, int id)
     current = current->next;
   }
 
-  return NULL;
+  return "That number does not exists";
 }
 
 void print_history(List *list)
 {
-
   Item* current = list->root;
   puts("History");
   while(current != NULL){
     printf("ID: %d, %s\n",current->id, current->str);
     current = current->next;
   }
-
 }
 
 void free_history(List *list)
