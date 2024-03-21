@@ -42,7 +42,6 @@ void add_history(List *list, char *str)
 
   item->next = NULL;
   
-  
   //If my list is NULL
   if (list->root == NULL){
     item->id = 1;
@@ -66,7 +65,7 @@ char *get_history(List *list, int id)
   Item* current = list->root;
 
   while(current != NULL){
-
+    printf("This is my current ID ", current->id);
     if (current->id == id){
       return current->str;
     }
@@ -74,7 +73,7 @@ char *get_history(List *list, int id)
     current = current->next;
   }
 
-  return "That number does not exists";
+  return "That number does not exist\n";
 }
 
 void print_history(List *list)
@@ -89,6 +88,15 @@ void print_history(List *list)
 
 void free_history(List *list)
 {
+  Item* current = list->root;
+
+  while(current != NULL){
+    Item* temp = current;
+    current = current->next;
+    free(temp);
+  }
+
+  free(list);
   return;
 }
 

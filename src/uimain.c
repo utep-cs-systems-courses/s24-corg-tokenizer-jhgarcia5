@@ -4,14 +4,13 @@
 
 int main()
 {
-  puts("Hi! Welcome to our character");
+  printf("Hi! Welcome to our character");
   //Have to create a History list here
   List* history = init_history();
   //char inputString[100];
   while(1) {
 
-    fputs("Please WOKR input a string to tokenizer ( i ), check history ( h ), or quit ( q )\n>", stdout);
-    fflush(stdout);
+    printf("Please WOKR input a string to tokenizer ( i ), check history ( h ), or quit ( q )\n>");
     int c = getchar();
     while(c == '\n' || c == EOF){ //Ignore entered newlines
       c = getchar();
@@ -19,8 +18,7 @@ int main()
 	  
     switch(c) {
       case 'i':
-        fputs("Enter your new string\n>", stdout);
-	fflush(stdout);
+        printf("Enter your new string\n>");
         char inputString[100];
 	getchar();
         fgets(inputString, sizeof(inputString), stdin);
@@ -30,15 +28,13 @@ int main()
 
 	//HAVE TO ADD TO LLIST IN HISTORY
 	add_history(history, inputString);
-	puts("Passed adding to history");
         free_tokens(tokens);
-	puts("Freed tokenss");
         break;
 
       case 'h':
 
-	fputs("Do you want to access a specific index or all history? (Input the '!' for a specific index or 'a' for all)\n>", stdout);
-	fflush(stdout);
+	printf("Do you want to access a specific index or all history? (Input the '!' for a specific index or 'a' for all)\n>");
+	getchar();
 
 	int h = getchar();
 	while(h == '\n' || h == EOF){
@@ -63,7 +59,8 @@ int main()
 
       case 'q':
         puts("Thank you for using this program!");
-        goto done;
+	free_history(history);
+	goto done;
 
       default:
         puts("Please enter a recognized option");
