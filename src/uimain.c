@@ -36,7 +36,7 @@ int main()
 	printf("Do you want to access a specific index or all history? (Input the '!' for a specific index or 'a' for all)\n>");
 	getchar();
 
-	int h = getchar();
+	char h = getchar();
 	while(h == '\n' || h == EOF){
 	  h = getchar();
 	}
@@ -48,7 +48,9 @@ int main()
 	  case '!':
 	    printf("Enter the number you want to retrieve\n>");
 	    getchar();
-	    int o = getchar();
+	    char o = getchar();
+	    int val = atoi(o);
+	    
 	    //puts("PASSING");
 	    //Its inputting something into o directly
 	    printf(get_history(history, o));	  

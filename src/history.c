@@ -65,7 +65,7 @@ char *get_history(List *list, int id)
   Item* current = list->root;
 
   while(current != NULL){
-    printf("This is my current ID ", current->id);
+    printf("This is my current ID %d", current->id);
     if (current->id == id){
       return current->str;
     }
