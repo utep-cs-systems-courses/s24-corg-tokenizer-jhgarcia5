@@ -21,6 +21,7 @@ int main()
         printf("Enter your new string\n>");
         char inputString[100];
 	getchar();
+
         fgets(inputString, sizeof(inputString), stdin);
 	printf("You inputed: %s", inputString);
 	char **tokens = tokenize(inputString);
@@ -48,15 +49,12 @@ int main()
 	  case '!':
 	    printf("Enter the number you want to retrieve\n>");
 	    getchar();
-	    char o = getchar();
-	    int val = atoi(o);
-	    
-	    //puts("PASSING");
-	    //Its inputting something into o directly
-	    printf(get_history(history, o));	  
+	    char number[10];
+	    fgets(number, sizeof(number), stdin);
+	    int val = atoi(number);
+	    printf(get_history(history, val));	  
 	    break; 
-	}
-	
+	}	
 	break;
 
       case 'q':
@@ -69,7 +67,6 @@ int main()
 
     }     
   }
-
   done:
   return 0;
 }

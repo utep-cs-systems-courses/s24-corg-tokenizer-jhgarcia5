@@ -75,7 +75,8 @@ char *copy_str(char *inStr, short len)
   while(stringIndex < len){
     copyInStr[stringIndex] = inStr[stringIndex];
     stringIndex += 1;
-  }  
+  }
+  copyInStr[len] = '\0';
   return copyInStr;
 }
  
@@ -92,7 +93,7 @@ char *copy_str(char *inStr, short len)
  char **tokenize(char* str)
  {
    int numTokens = count_tokens(str);
-   char **tokens = malloc((numTokens + 1) * sizeof(char));
+   char **tokens = malloc((numTokens + 1) * sizeof(char*));
 
    int tokenIndex = 0;
    char *index = str;
