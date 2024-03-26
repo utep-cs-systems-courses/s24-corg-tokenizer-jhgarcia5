@@ -13,4 +13,4 @@ run:
 	./tokenizer
 
 clean:
-	rm -f *.0 tokenizer
+	rm -f *.o *.c~ *.h~ *~ *.c# .0 tokenizer
